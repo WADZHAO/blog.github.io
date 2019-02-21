@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= blog.title %></div>
+    <form class="ui form" action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+        <!--'?_method=PUT' will override the 'POST' method, and treat the request as a PUT request-->
+        <div class="field"> 
+            <label>Title</label>
+            <input type="text" name="blog[title]" value="<%= blog.title %>"> 
+            <!--Prefilled the cell with desired blog title-->
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <input type="text" name="blog[image]" value="<%= blog.image %>">
+        </div>
+        <div class="field">
+            <label>Blog Content</label>
+            <textarea name="blog[body]" ><%= blog.body %></textarea>
+            <!--<textarea> doesn't have a 'value' attribute, so just copy the ejs code inside <textarea> tag-->
+        </div>
+        <button class="ui secondary button">Submit</button>
+        <!--<input class="ui big black basic button" type="submit">-->
+        <!--<button class="ui big button">Cancel</button>-->
+    </form>
+</div>
+<% include ./partials/footer %>
